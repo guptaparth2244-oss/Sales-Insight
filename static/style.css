@@ -1,0 +1,251 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --navy: #111c36;
+    --blue: #5969e8;
+    --bg: #f4f6fb;
+    --text: #1b2540;
+    --muted: #7e8aa3;
+    --border: #e8ebf3;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: Inter, Arial, sans-serif;
+    font-size: 14px;
+}
+
+.sidebar {
+    position: fixed;
+    inset: 0 auto 0 0;
+    width: 235px;
+    background: var(--navy);
+    color: white;
+    padding: 28px 18px;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar h2 {
+    font-size: 20px;
+    margin: 0 0 45px 4px;
+}
+
+.side-label {
+    color: #8997b5;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    margin: 0 0 14px 10px;
+}
+
+.nav {
+    color: #bdc7dc;
+    text-decoration: none;
+    padding: 14px 12px;
+    border-radius: 9px;
+    margin-bottom: 7px;
+}
+
+.nav:hover, .nav.active {
+    background: #293757;
+    color: white;
+}
+
+.nav.active { border-left: 3px solid #8e9aff; }
+
+.sidebar-bottom {
+    margin-top: auto;
+    border-top: 1px solid #34405c;
+    padding-top: 18px;
+}
+
+.sidebar-bottom p {
+    color: #9ba8c1;
+    font-size: 12px;
+}
+
+.main {
+    margin-left: 235px;
+    padding: 32px;
+    max-width: 1800px;
+}
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.eyebrow {
+    color: var(--muted);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+h1 {
+    font-size: 29px;
+    margin: 0 0 8px;
+}
+
+.muted { color: var(--muted); }
+
+.primary {
+    background: var(--blue);
+    color: white;
+    border: 0;
+    padding: 12px 16px;
+    border-radius: 9px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.primary:hover { background: #4354d0; }
+
+.toolbar {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin: 28px 0 20px;
+}
+
+.toolbar input, .toolbar select {
+    min-width: 140px;
+    flex: 1;
+    border: 1px solid var(--border);
+    background: white;
+    padding: 12px;
+    border-radius: 9px;
+    color: var(--text);
+    font-size: 12px;
+}
+
+.toolbar input { flex: 2; min-width: 220px; }
+
+.upload {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#message {
+    color: var(--blue);
+    font-size: 12px;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 17px;
+    margin: 20px 0;
+}
+
+.stat-card, .panel {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    box-shadow: 0 4px 20px rgba(24, 39, 75, .025);
+}
+
+.stat-card { padding: 22px; min-width: 0; }
+
+.stat-card span {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.stat-card h2 {
+    font-size: 25px;
+    margin: 18px 0 9px;
+    overflow-wrap: anywhere;
+}
+
+.stat-card p {
+    color: #8a95a9;
+    font-size: 11px;
+}
+
+.charts {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+.panel { padding: 23px; min-width: 0; }
+
+.panel h3 {
+    font-size: 15px;
+    margin: 0 0 8px;
+}
+
+.chart-wrap {
+    height: 260px;
+    position: relative;
+    margin-top: 18px;
+}
+
+.wide { grid-column: 1 / -1; }
+.records { margin-top: 20px; }
+
+.table-wrap { overflow-x: auto; }
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    white-space: nowrap;
+}
+
+th {
+    background: #f7f8fc;
+    color: #78839a;
+    font-size: 11px;
+}
+
+td, th {
+    padding: 14px 12px;
+    border-bottom: 1px solid var(--border);
+}
+
+td { font-size: 12px; }
+tbody tr:hover { background: #f8f9ff; }
+
+footer {
+    text-align: center;
+    padding: 25px 0 5px;
+    color: var(--muted);
+    font-size: 11px;
+}
+
+@media (max-width: 1100px) {
+    .main { padding: 24px; }
+    .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 720px) {
+    .sidebar {
+        position: static;
+        width: 100%;
+        padding: 18px;
+    }
+
+    .sidebar h2 { margin: 0 0 15px; }
+    .side-label, .sidebar-bottom { display: none; }
+    .nav { display: inline-block; padding: 10px; margin: 0 3px 0 0; }
+    .main { margin-left: 0; padding: 17px; }
+    .topbar { align-items: flex-start; flex-direction: column; }
+    h1 { font-size: 25px; }
+    .stats, .charts { grid-template-columns: 1fr; }
+    .wide { grid-column: auto; }
+    .toolbar input, .toolbar select { min-width: 100%; }
+}

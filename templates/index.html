@@ -1,0 +1,136 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SalesInsight Dashboard</title>
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<aside class="sidebar">
+    <h2>◈ SalesInsight</h2>
+    <p class="side-label">WORKSPACE</p>
+    <a class="nav active" href="#dashboard">▦ Dashboard</a>
+    <a class="nav" href="#analytics">▥ Analytics</a>
+    <a class="nav" href="#records">▤ Sales Records</a>
+    <div class="sidebar-bottom">
+        <strong>Data Science Project</strong>
+        <p>Python · Flask</p>
+    </div>
+</aside>
+
+<main class="main" id="dashboard">
+    <header class="topbar">
+        <div>
+            <p class="eyebrow">OVERVIEW / ANALYTICS</p>
+            <h1>Sales Dashboard</h1>
+            <p class="muted">Understand your sales performance.</p>
+        </div>
+        <button class="primary" id="exportBtn">↓ Export Report</button>
+    </header>
+
+    <section class="toolbar">
+        <input id="search" type="search"
+               placeholder="Search product or region...">
+
+        <select id="category">
+            <option value="">All Categories</option>
+        </select>
+
+        <select id="region">
+            <option value="">All Regions</option>
+        </select>
+
+        <label class="primary upload">
+            ↑ Upload CSV
+            <input type="file" id="fileInput" accept=".csv" hidden>
+        </label>
+    </section>
+
+    <p id="message" role="status"></p>
+
+    <section class="stats">
+        <article class="stat-card">
+            <span>Total Revenue</span>
+            <h2 id="revenue">₹0</h2>
+            <p>Revenue from sales</p>
+        </article>
+
+        <article class="stat-card">
+            <span>Total Orders</span>
+            <h2 id="orders">0</h2>
+            <p>Sales records</p>
+        </article>
+
+        <article class="stat-card">
+            <span>Units Sold</span>
+            <h2 id="units">0</h2>
+            <p>Total quantity</p>
+        </article>
+
+        <article class="stat-card">
+            <span>Average Order Value</span>
+            <h2 id="average">₹0</h2>
+            <p>Revenue divided by records</p>
+        </article>
+    </section>
+
+    <section class="charts" id="analytics">
+        <article class="panel">
+            <h3>Monthly Revenue Trend</h3>
+            <p class="muted">Revenue over time</p>
+            <div class="chart-wrap">
+                <canvas id="monthlyChart"></canvas>
+            </div>
+        </article>
+
+        <article class="panel">
+            <h3>Revenue by Category</h3>
+            <p class="muted">Category contribution</p>
+            <div class="chart-wrap">
+                <canvas id="categoryChart"></canvas>
+            </div>
+        </article>
+
+        <article class="panel wide">
+            <h3>Top Products</h3>
+            <p class="muted">Products ranked by revenue</p>
+            <div class="chart-wrap">
+                <canvas id="productChart"></canvas>
+            </div>
+        </article>
+    </section>
+
+    <section class="panel records" id="records">
+        <h3>Sales Records</h3>
+        <p class="muted" id="recordCount">Loading...</p>
+
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Product</th>
+                        <th>Category</th>
+                        <th>Region</th>
+                        <th>Quantity</th>
+                        <th>Unit Price</th>
+                        <th>Revenue</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody"></tbody>
+            </table>
+        </div>
+        <p class="muted">Showing up to 200 matching records.</p>
+    </section>
+
+    <footer>SalesInsight · B.Tech Data Science Mini Project</footer>
+</main>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
